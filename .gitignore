@@ -1,0 +1,18 @@
+build/
+out/
+.vs/
+.vscode/
+CMakeUserPresets.json
+
+*.log
+*.user
+*.suo
+*.sdf
+*.opendb
+*.aps
+
+# Local overrides of the shipped config
+gridvr.local.ini
+
+# Local planning notes (kept out of history)
+plan*.md
