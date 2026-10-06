@@ -11,33 +11,8 @@ an OpenXR headset.
 - The **race HUD** is lifted out of the picture and shown on a panel you can
   place, or hidden. The pause menu and the mod's own menu keep their own place.
 
-## Features
-
-- **Full VR for GRID Legends**: immersive stereo 3D with head tracking on
-  track, in any OpenXR headset that supports Direct3D 12.
-- **Menus on a virtual screen**: the game's menus and pause screen float in
-  front of you at a distance and size you choose.
-- **Movable race HUD**: the HUD is lifted out of the picture onto a cockpit
-  panel you can position and resize, or it can be left in the corners or
-  hidden.
-- **In-headset settings menu**: everything is adjustable live from a menu
-  usable with mouse, keyboard or controller.
-- **Rebindable hotkeys**: recentre, set driving position, reset position and
-  open menu can all be remapped; both thumbsticks also open the menu.
-- **Guided driving-position setup**: a two-step "Set centre" to place yourself
-  in the seat, plus one-key recentre.
-- **Supersampling control**: pick a square render resolution suited to the
-  headset, with pixels per degree shown.
-- **Mixed reality background**: set a key colour around the menu screen so
-  headset software can show your room through it.
-- **Automatic game setup**: vsync, frame cap, motion blur and reflection
-  settings are fixed for VR at each start, with your original settings backed
-  up.
-- **Performance readout**: an optional display of where the frame time goes.
-- **One-file install**: a single `d3d12.dll`, with an installer that finds the
-  Steam copy, updates and cleanly uninstalls.
-- **Falls back gracefully**: with no headset connected the game runs normally
-  on the monitor.
+How it works and how it got here (camera discovery, hook sites, every
+round of testing) is logged in [plan-legends.md](plan-legends.md).
 
 ## Requirements
 
@@ -208,10 +183,8 @@ Everything else in that file is left as you set it.
   resolution or the game's detail settings before accepting a low frame rate.
   "Show performance" in the menu shows where the time goes.
 - **Anti-aliasing (game options).** Not forced. With everything off the
-  picture is noticeably jagged. Temporal methods (TAA, XeSS, or DLSS through
-  a wrapper) reuse the previous frame, which here belongs to the other eye, so
-  they may ghost or shimmer; try them and keep what looks best. SMAA does not
-  depend on previous frames.
+  picture is noticeably jagged. TAA works well and is a good choice. XeSS and
+  DLSS through a wrapper are untested.
 - **Frame generation.** Leave it off. It would invent frames between a
   left-eye and a right-eye image.
 - **The headset runtime's own motion smoothing / reprojection** (ASW, SSW,
@@ -236,7 +209,8 @@ Everything else in that file is left as you set it.
 ## Known limits
 
 - Each eye updates at half the frame rate (alternate-eye rendering); fast
-  motion can show a double image.
+  motion can show a double image. Warping the stale eye is a parked
+  investigation in [plan-afw.md](plan-afw.md).
 - The HUD has no transparency information of its own; the mod derives it from
   brightness, so dark backing plates disappear.
 - Cutscenes and replays count as "on track" and are shown immersive.
@@ -269,13 +243,16 @@ access.
 
 The output is `build\Release\d3d12.dll`.
 
-To make a folder you can hand to someone, build the `dist` target:
+To make a folder you can hand to someone, run `make-dist.bat` (double-click
+it, or run it from any folder). It configures the build folder if that has not
+been done yet and then builds the `dist` target, which you can also do
+yourself:
 
 ```powershell
 cmake --build build --config Release --target dist
 ```
 
-It builds the DLL if needed and writes `build\dist\GridLegendsVR\` (the DLL,
+Either way it builds the DLL if needed and writes `build\dist\GridLegendsVR\` (the DLL,
 the installer, this README and a `VERSION.txt`) plus a zip of it. The version
 number is `GRIDVR_VERSION` in `CMakeLists.txt`.
 
@@ -291,6 +268,7 @@ number is `GRIDVR_VERSION` in `CMakeLists.txt`.
 | `src/vr12_settings.*`, `src/vr12_game_config.*` | The mod's settings and the game-settings edits |
 | `installer/` | The install / uninstall script |
 | `tools/camfind/` | Development tooling used to find the camera |
+| `plan-legends.md` | The development log |
 
 ## Support
 
