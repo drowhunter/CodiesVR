@@ -15,7 +15,7 @@ round of testing) is logged in [plan-legends.md](plan-legends.md).
 
 ## Requirements
 
-- GRID Legends (Steam), run at least once so that its settings file exists.
+- GRID Legends (Steam, EA) or Dirt 4 (Steam), run at least once so that its settings file exists.
 - A headset with an OpenXR runtime that supports Direct3D 12. Developed
   against Virtual Desktop.
 
@@ -25,9 +25,15 @@ stops alternating eyes until it is back.
 
 ## Install
 
+### Grid Legends
 Run `GridLegendsVR-Setup.bat` with `d3d12.dll` next to it. It finds the Steam
 copy of the game, or asks you to drag the game folder onto its window and
 checks that `GridLegends.exe` is there.
+
+### Dirt 4
+Run `Dirt4VR-Setup.bat` with `d3d11.dll` next to it. It finds the Steam
+copy of the game, or asks you to drag the game folder onto its window and
+checks that `Dirt4.exe` is there.
 
 Run the same file again to update or uninstall. Uninstalling removes the mod's
 files and puts back the game's original settings file and any `d3d12.dll` that
@@ -41,6 +47,8 @@ installer checks and tells you if it is missing.
 
 The installer only copies one file, so you can do it by hand:
 
+### Grid Legends
+
 1. Close GRID Legends.
 2. Open the game folder, the one that contains `GridLegends.exe`. In Steam:
    right-click the game, **Manage**, **Browse local files**. It is normally
@@ -51,12 +59,24 @@ The installer only copies one file, so you can do it by hand:
 5. Connect your headset, make sure its OpenXR runtime is active, and start the
    game from Steam as usual.
 
-To update, replace `d3d12.dll` with the new one.
+### Dirt 4
+
+1. Close GRID Legends.
+2. Open the game folder, the one that contains `Dirt4.exe`. In Steam:
+   right-click the game, **Manage**, **Browse local files**. It is normally
+   `...\steamapps\common\Dirt 4`.
+3. If there is already a `d3d11.dll` in that folder (from another mod), rename
+   it so you can put it back later.
+4. Copy the mod's `d3d11.dll` into that folder.
+5. Connect your headset, make sure its OpenXR runtime is active, and start the
+   game from Steam as usual.
+   
+To update, replace `d3d11.dll` with the new one.
 
 To uninstall by hand:
 
-1. Close the game and delete `d3d12.dll` from the game folder, then rename
-   any `d3d12.dll` you set aside in step 3 back.
+1. Close the game and delete `d3d12.dll` or 'd3d11.dll` from the game folder, then rename
+   any `d3d12.dll` or  `d3d11.dll` you set aside in step 3 back.
 2. Delete the files the mod created there, if present: `gridvr12.ini`,
    `gridvr12_hidden_shaders.txt`, `gridvr.log` and any `gridvr_mark_*.bmp`.
 3. To get your original graphics settings back, go to
