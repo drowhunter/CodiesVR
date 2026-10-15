@@ -1,8 +1,7 @@
-# GridLegendsVR
+# Codies VR
 
-A VR mod for **GRID Legends**. It is a proxy `d3d12.dll` that sits in the game
-folder, hooks the game's camera and frame presentation, and shows the game in
-an OpenXR headset.
+
+A VR mod for **GRID Legends & Dirt 4**. 
 
 - **Menus** are shown on a virtual screen in front of you.
 - **On track** the view is immersive stereo with head tracking, at the
