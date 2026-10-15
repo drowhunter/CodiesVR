@@ -1,5 +1,8 @@
 # Codies VR
 
+ [Buy me a coffee](https://ko-fi.com/drowhunter)
+ 
+
 
 A VR mod for **GRID Legends & Dirt 4**. 
 
@@ -275,20 +278,4 @@ Either way it builds the DLL if needed and writes `build\dist\GridLegendsVR\` (t
 the installer, this README and a `VERSION.txt`) plus a zip of it. The version
 number is `GRIDVR_VERSION` in `CMakeLists.txt`.
 
-## Layout
 
-| Path | What |
-|---|---|
-| `src/dx12-proxy/` | The `d3d12.dll` proxy and its entry point |
-| `src/hooks/` | Swapchain, camera, HUD and shader hooks |
-| `src/memory/` | Signature scanning and the camera callbacks |
-| `src/openxr/` | The OpenXR session, stereo submission and HUD pass |
-| `src/ui/overlay12.*` | The in-game menu |
-| `src/vr12_settings.*`, `src/vr12_game_config.*` | The mod's settings and the game-settings edits |
-| `installer/` | The install / uninstall script |
-| `tools/camfind/` | Development tooling used to find the camera |
-| `plan-legends.md` | The development log |
-
-## Support
-
-[Buy me a coffee](https://ko-fi.com/drowhunter)
